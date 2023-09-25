@@ -1,5 +1,7 @@
 from collections import Counter
+import sys
 #functions starts
+
 
 def addsub(uinput):
     string = uinput
@@ -7,7 +9,6 @@ def addsub(uinput):
     x=len(string)
     istring =""
     newstring = string
-
     while(n==1):
         if string[0]=="+":
             newstring=string[1:]
@@ -18,10 +19,6 @@ def addsub(uinput):
             break
         else:
             break
-    
-    
-
-
     opplist=[] 
     varlist=[]
     istring=""
@@ -51,7 +48,6 @@ def addsub(uinput):
                 uresult =num3
                 varilist [i]=0
                 varilist[i+1]=uresult
-
             else:
                 num1 = varilist[i]
                 num2 = varilist[i+1]
@@ -59,13 +55,12 @@ def addsub(uinput):
                 uresult =num3
                 varilist [i]=0
                 varilist[i+1]=uresult
-       
     uresult=float(uresult)
     if uresult.is_integer() == True:
        return int(uresult)  
     else:
-           return uresult 
-
+           return uresult
+        
 def multi(uinput):
   string = uinput
   z=1
@@ -150,14 +145,20 @@ def expcheck(sinput):
     return 0
 
 
+def normalise(uresult):
+    res =float(uresult)
+    if res.is_integer() == True:
+       return int(res)  
+    else:
+           return res
+
 def bodmas(userinput):
 
 
     exp = str(userinput)
 
-    if("("in exp or ")" in exp):
+    if("("in exp):
         result = brackets(exp)
-        
         return bodmas(result)
     elif "/" in exp:
         result= divide(exp)
@@ -172,7 +173,9 @@ def bodmas(userinput):
         result = addsub(exp)
         return result
     else:
+        
         return str(exp)
+
 
 
 
@@ -181,47 +184,44 @@ def brackets(userinput):
     size = len(sample)
     Lbrack=0
     Rbrack=0
-    for i in range(0,size-1):
-        if sample[i]=="(":
-            Lbrack=i
-            break
-    
-    for i in range(size-1,0,-1):
-        if sample[i]==")":
-            Rbrack=i
-            break
-
-
+    c=0
+    for i in range(0,size,1):
+        if sample[i]=="(": 
+            c=c+1
+  
+            if c==1:
+                Lbrack=i
+            
+        elif sample[i]==")":
+            
+            if c==1:
+                Rbrack=i 
+            c=c-1   
+      
     subsample=sample[Lbrack+1:Rbrack]
-
+    subsample=bodmas(subsample)
     Lsample = sample[:Lbrack]
-
+    
     Rsample = sample[Rbrack+1:]
 
-    Midsample= str(bodmas(subsample))
-
-    lsindex = len(Lsample)-1
-
-
-    if len(Lsample) == 0:
-        Lsample = Lsample+""
-    elif Lsample[lsindex].isalnum() == True :
-        Lsample= Lsample +"*"
-
-
-
-
-    if len(Rsample) == 0:
-        Rsample = Rsample+""
-    elif Rsample[0].isalnum() == True :
-        Rsample= "*"+Rsample 
-    elif Rsample[0]==")":
-        Rsample= ""+Rsample 
-
+  
+    if len(Rsample)!=0:
+     if Rsample[0]=="(" or Rsample[0].isdigit()==True:
+         Rsample="*"+Rsample
     
-    Fullsample = Lsample+Midsample+Rsample
+    if len(Lsample)!=0 :
+      if Lsample[-1]==")" or Lsample[-1].isdigit()==True :
+        Lsample=Lsample+"*"   
 
-    return Fullsample
+
+    fullstring = Lsample+str(subsample)+Rsample
+
+    if "(" in fullstring:
+       fullstring=brackets(fullstring)
+
+    return fullstring
+
+
 
 def divide(uinput):
   string = uinput
@@ -282,7 +282,7 @@ def divide(uinput):
 
 
 while True:
-      userinput=str(input("Enter an Equation : "))
+      userinput=str(input("Enter an Expression : "))
       userinput = userinput.replace(" ","")
       userinput = userinput.replace("÷","/")
       check = expcheck(userinput)
@@ -290,5 +290,4 @@ while True:
           continue
       elif check ==0 :
             main_result = bodmas(userinput)
-            print("Result :",main_result)
-
+            print("Result :",normalise(main_result))

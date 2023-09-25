@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Dancing+Script:wght@500;700&family=Orbitron&display=swap');
+
+
+body{
+    background-color: rgb(53, 50, 50);
+    display: flex;
+    justify-content: center;
+    
+    flex-direction: column;
+    height: 100vh;
+    font-size: 1rem;
+    font-weight: 900;
+
+    
+}
+
+
+.calcbox{
+   align-self: center;
+   background-color: #252525;
+   padding: 10px;
+   border-radius: 10px;
+   border: solid 5px rgba(0, 0, 0, 0.158);
+       font-weight: 900;
+}
+
+button{
+    font-family: 'Caveat', cursive;
+    font-family: 'Dancing Script', cursive;
+    font-family: 'Orbitron', sans-serif;
+    
+}
+.uin{
+    background-color: rgb(28, 23, 32);
+    border: 0px;
+    height: 7rem;
+    width: 30rem;
+    font-size: 2rem;
+    color: rgb(176, 132, 233);
+    text-align: right;
+    font-weight: 900;
+
+    font-family: 'Caveat', cursive;
+    font-family: 'Dancing Script', cursive;
+    font-family: 'Orbitron', sans-serif;
+}
+
+@media(max-width:600px){
+    .calcbox{
+        width: 95%;
+    }
+
+    .display{
+        width: 95%;
+    }
+    .uin{
+        width: 100%;
+    }
+}
+
+.numberbox{
+    display: grid;
+    grid-template-areas: 
+    "a b c"
+    "d e f"
+    "g h i";
+    grid-template-rows:  3rem 3rem 3rem 3rem 3rem;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap : 10px
+    
+    
+        
+}
+
+.ib{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.589);
+   
+    border-radius: 5px;
+    font-size: 2rem;
+    font-weight: 900;
+}
+
+.itembd{
+    grid-area: 5/2/6/3;
+}
+
+
+
+
+.ob{
+    background: linear-gradient(130deg,#5993ff 30%,#9c4ae9 70%);
+   
+    height: 200%;
+    width: 100%;
+    font-size: 300%;
+    border-radius: 5px;
+    font-weight: 560;
+
+}
+
+.item{
+    height: 100%;
+}
+
+.operators{
+    display: flex;
+    flex-direction: row;
+    max-height: 40px ;
+    width: 100%;
+    justify-content: space-around;   
+    gap: 10px;
+}
+
+.opb{
+    flex: 100;
+
+}
+
+.btns{
+    display: flex;
+    flex-direction: column;
+    gap :50px;
+}
+
+.display{
+    width: 100%;
+
+
+
+}
+
+
+.back{
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.178);
+    height: 1.2em;
+    padding: 20px;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size:x-large;
+    width: 50px;
+    margin-top: 2--px;
+
+}
+
+.ft{
+    display: flex;
+    justify-content: center;
+    
+    flex-direction: row;
+}
+
