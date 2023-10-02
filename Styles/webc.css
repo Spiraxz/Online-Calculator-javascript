@@ -36,7 +36,7 @@ button{
     height: 7rem;
     width: 30rem;
     font-size: 2rem;
-    color: rgb(176, 132, 233);
+    color: rgb(163, 217, 241);
     text-align: right;
     font-weight: 900;
 
@@ -73,13 +73,13 @@ button{
 }
 
 .ib{
-    height: 100%;
+    height: 50px;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.589);
+    background-color: rgba(255, 255, 255, 0.863);
    
-    border-radius: 5px;
+    border-radius: 10px;
     font-size: 2rem;
-    font-weight: 900;
+    font-weight: 400;
 }
 
 .itembd{
@@ -90,13 +90,13 @@ button{
 
 
 .ob{
-    background: linear-gradient(130deg,#5993ff 30%,#9c4ae9 70%);
+    background: linear-gradient(130deg,#5993ff 10%,#6e70eb 90%);
    
-    height: 200%;
+    
     width: 100%;
-    font-size: 300%;
-    border-radius: 5px;
-    font-weight: 560;
+    font-size: 250%;
+    border-radius: 10px;
+    font-weight: 60;
 
 }
 
@@ -152,3 +152,7 @@ button{
     flex-direction: row;
 }
 
+.pressed {
+    box-shadow: 0 3px 4px 0 #DBEDF3;
+    opacity: 0.5;
+  }

@@ -156,8 +156,11 @@ def bodmas(userinput):
 
 
     exp = str(userinput)
-
-    if("("in exp):
+    if "**" in exp:
+        result = sqr(exp)
+        x=str(bodmas(result))
+        return str(x)
+    elif("("in exp):
         result = brackets(exp)
         return bodmas(result)
     elif "/" in exp:
@@ -169,6 +172,7 @@ def bodmas(userinput):
         result = multi(exp)
         x=str(bodmas(result))
         return str(x)
+
     elif "+" in exp or "-" in exp:
         result = addsub(exp)
         return result
@@ -223,6 +227,61 @@ def brackets(userinput):
 
 
 
+def sqr(uinput):
+  string = uinput
+  z=1
+  a= string.find("**")
+  var1=string[:a]
+  if string[a+1] == "-":
+     z= -1
+     var2=string[a+2:]
+     
+  else:
+    z=1
+    var2=string[a+1:]
+    
+  sindex_a_l = 0
+  sindex_a_r = len(var1)-1
+  for i in range(len(var1)-1,-1,-1):
+    if(var1[i].isalnum()==True  or  var1[i]=="."):
+        continue
+    else :
+        sindex_a_l = i+1
+        break
+    
+
+  sindex_b_l = 0
+  sindex_b_r = len(var2)-1
+  for i in range(0,len(var2)-1):
+   if(var2[i].isalnum()==True or  var2[i]=="."):
+      continue
+   else :
+      sindex_b_r = i-1
+      break
+
+  n1 = var1[sindex_a_l:sindex_a_r+1]
+  n2= var2[sindex_b_l:sindex_b_r+1]
+  
+  str(n1)
+  str(n2)
+  print(n1)
+  print(n2)
+  num1=float(n1)
+  num2=float(n2)
+  num3= num1**(z*num2)
+  num3 = str(num3)
+  leftstring = var1[0:sindex_a_l]
+  rightstring = var2[sindex_b_r+1:]
+
+  fullstring = leftstring+num3+rightstring
+ 
+  fullstring= fullstring.replace("--", "+",1)
+  fullstring= fullstring.replace("+-","-",1)
+  if("**" in fullstring):
+     return multi(fullstring)
+  else:
+     return fullstring
+  
 def divide(uinput):
   string = uinput
   z=1
@@ -274,8 +333,6 @@ def divide(uinput):
      return multi(fullstring)
   else:
      return fullstring
-  
-
 #functions ends
 
 #main
@@ -291,3 +348,5 @@ while True:
       elif check ==0 :
             main_result = bodmas(userinput)
             print("Result :",normalise(main_result))
+
+    
