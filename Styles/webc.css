@@ -39,7 +39,7 @@ button{
     color: antiquewhite ;
     text-align: right;
     font-weight: 900;
-
+    overflow:scroll;
     font-family: 'Caveat', cursive;
     font-family: 'Dancing Script', cursive;
     font-family: 'Orbitron', sans-serif;
